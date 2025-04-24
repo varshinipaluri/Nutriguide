@@ -1,0 +1,13 @@
+knn_model.pkl
+gradient_boosting_model.pkl
+random_forest_model.pkl
+xgboost_model.pkl
+logistic_regression_model.pkl
+label_encoder.pkl
+scaler.pkl
+lightgbm_model.pkl
+neural_network_model.pkl
+svm_model.pkl
+
+food_recommendation_model.pkl
+meal_classifier_model.pkl
