@@ -9,5 +9,3 @@ lightgbm_model.pkl
 neural_network_model.pkl
 svm_model.pkl
 
-food_recommendation_model.pkl
-meal_classifier_model.pkl

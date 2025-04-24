@@ -12,7 +12,6 @@ from streamlit_extras.stylable_container import stylable_container
 # Set page config for better appearance
 st.set_page_config(
     page_title="NutriGuide AI",
-    page_icon="🥗",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -114,9 +113,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Set up the environment
-# st.write("Current working directory:", os.getcwd())
-
 # Load datasets
 @st.cache_data
 def load_data():
@@ -129,10 +125,6 @@ foods_df, meals_df, nutrients_df = load_data()
 
 # Load trained model
 model = joblib.load("model/food_recommendation_model.pkl")
-
-# ------------------------------
-# Utility functions
-# ------------------------------
 
 def calculate_bmr(weight, height, age, gender):
     if gender == "male":
@@ -165,14 +157,11 @@ def calculate_macronutrients(tdee, goal):
         carbs = (tdee - (protein + fat)) / 4
     return protein, fat, carbs
 
-# ------------------------------
-# Streamlit App UI
-# ------------------------------
 
 # Hero Section
 col1, col2 = st.columns([2, 1])
 with col1:
-    st.markdown('<h1 class="custom-header">NutriGuide AI</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="custom-header">Food Foresight</h1>', unsafe_allow_html=True)
     st.markdown("""
     <p style="font-size: 1.2rem; color: #555;">
     Your personalized nutrition assistant that helps you discover the perfect meals 
@@ -375,7 +364,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
         if not best_meal_plan.empty:
             st.markdown(f"""
             <div class="card">
-                <h3>🍳 Breakfast</h3>
+                <h3> Breakfast</h3>
                 <p>{best_meal_plan['Breakfast'].values[0]}</p>
                 <p class="small" style="color: #666;">~400 kcal</p>
             </div>
@@ -385,7 +374,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
         if not best_meal_plan.empty:
             st.markdown(f"""
             <div class="card">
-                <h3>🍲 Lunch</h3>
+                <h3>Lunch</h3>
                 <p>{best_meal_plan['Lunch'].values[0]}</p>
                 <p class="small" style="color: #666;">~600 kcal</p>
             </div>
@@ -395,7 +384,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
         if not best_meal_plan.empty:
             st.markdown(f"""
             <div class="card">
-                <h3>🍽️ Dinner</h3>
+                <h3> Dinner</h3>
                 <p>{best_meal_plan['Dinner'].values[0]}</p>
                 <p class="small" style="color: #666;">~500 kcal</p>
             </div>
@@ -405,7 +394,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
         if not best_meal_plan.empty:
             st.markdown(f"""
             <div class="card">
-                <h3>🍎 Snacks</h3>
+                <h3> Snacks</h3>
                 <p>{best_meal_plan['Snacks'].values[0]}</p>
                 <p class="small" style="color: #666;">~200 kcal</p>
             </div>
@@ -414,7 +403,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
     # Water Intake Recommendation
     st.markdown(f"""
     <div class="card">
-        <h3>💧 Hydration</h3>
+        <h3> Hydration</h3>
         <p>Recommended water intake: {best_meal_plan['Water_Intake_L'].values[0]} liters per day</p>
         <div style="height: 10px; background: #e0f2fe; border-radius: 5px; margin-top: 10px;">
             <div style="width: 75%; height: 100%; background: #4b6cb7; border-radius: 5px;"></div>
@@ -499,7 +488,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
     with col1:
         st.markdown("""
         <div class="card">
-            <h3>🥦 Protein Sources</h3>
+            <h3> Protein Sources</h3>
             <ul>
                 <li>Chicken breast</li>
                 <li>Greek yogurt</li>
@@ -513,7 +502,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
     with col2:
         st.markdown("""
         <div class="card">
-            <h3>⏰ Meal Timing</h3>
+            <h3>Meal Timing</h3>
             <ul>
                 <li>Eat within 1 hour of waking</li>
                 <li>Space meals 3-4 hours apart</li>
@@ -526,7 +515,7 @@ if 'recommendations_generated' in st.session_state and st.session_state['recomme
     with col3:
         st.markdown("""
         <div class="card">
-            <h3>📈 Progress Tracking</h3>
+            <h3> Progress Tracking</h3>
             <ul>
                 <li>Weigh yourself weekly</li>
                 <li>Take progress photos monthly</li>
